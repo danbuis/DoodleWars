@@ -8,4 +8,8 @@ public class GameValues {
     //background values
     public static final int TILES_PER_SIDE = 10;
     public static final int TILE_SIZE = 3;
+
+    //ship values
+    public static final float PLAYER_WIDTH = 1.8f;
+    public static final float PLAYER_HEIGHT = 2.4f;
 }

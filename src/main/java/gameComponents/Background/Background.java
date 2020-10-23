@@ -5,6 +5,7 @@ import Geometry2d.BBDPoint;
 import Geometry2d.BBDPolygon;
 import OpenGL.*;
 import com.sun.prism.ps.Shader;
+import engine.Utils;
 import gameComponents.GameValues;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class Background implements GameComponent {
                 new BBDPoint(GameValues.TILE_SIZE, 0)
         });
 
-        ShaderProgram shader = buildBackgroundShaderProgram();
+        ShaderProgram shader = Utils.buildBasicTexturedShaderProgram();
         Texture texture = new Texture("assets/images/Background.png");
 
         //build an array of notebook backgrounds
@@ -60,28 +61,5 @@ public class Background implements GameComponent {
     @Override
     public void cleanup() {
 
-    }
-
-    private ShaderProgram buildBackgroundShaderProgram(){
-        ShaderProgram returnProgram = null;
-        try {
-            returnProgram = new ShaderProgram();
-
-            //create and attach shaders
-            returnProgram.createVertexShader(Utils.loadShaderScript("/shaders/vertex.vs"));
-            returnProgram.createFragmentShader(Utils.loadShaderScript("/shaders/fragment.fs"));
-
-            //give the shader program an id
-            returnProgram.link();
-
-            // Create uniforms for world and projection matrices and texture
-            returnProgram.createUniform("projectionMatrix");
-            returnProgram.createUniform("worldMatrix");
-            returnProgram.createUniform("texture_sampler");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return returnProgram;
     }
 }
