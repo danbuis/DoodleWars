@@ -10,6 +10,6 @@ public class GameValues {
     public static final int TILE_SIZE = 3;
 
     //ship values
-    public static final float PLAYER_WIDTH = 1.8f;
-    public static final float PLAYER_HEIGHT = 2.4f;
+    public static final float PLAYER_WIDTH = 1.5f;
+    public static final float PLAYER_HEIGHT = 2f;
 }
