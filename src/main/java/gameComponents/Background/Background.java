@@ -1,9 +1,10 @@
 package gameComponents.Background;
 
-import GameEngine.GameComponent;
-import Geometry2d.BBDPoint;
-import Geometry2d.BBDPolygon;
-import OpenGL.*;
+import BBDGameLibrary.GameEngine.Camera;
+import BBDGameLibrary.GameEngine.GameComponent;
+import BBDGameLibrary.Geometry2d.BBDPoint;
+import BBDGameLibrary.Geometry2d.BBDPolygon;
+import BBDGameLibrary.OpenGL.*;
 import com.sun.prism.ps.Shader;
 import engine.Utils;
 import gameComponents.GameValues;
@@ -14,8 +15,9 @@ import java.util.List;
 public class Background implements GameComponent {
     private BackgroundBase[] base = new BackgroundBase[GameValues.TILES_PER_SIDE * GameValues.TILES_PER_SIDE];
     private final Renderer renderer;
-
-    public Background(Renderer renderer) {
+    private final Camera camera;
+    public Background(Renderer renderer, Camera camera) {
+        this.camera = camera;
         this.renderer = renderer;
     }
 
@@ -55,7 +57,7 @@ public class Background implements GameComponent {
 
     @Override
     public void render(Window window) {
-        renderer.renderArray(window, base);
+        renderer.renderArray(window, base, camera);
     }
 
     @Override

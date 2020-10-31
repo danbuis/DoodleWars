@@ -1,5 +1,6 @@
-import GameEngine.Engine;
-import GameEngine.GameComponent;
+import BBDGameLibrary.GameEngine.GameComponent;
+import BBDGameLibrary.GameEngine.Engine;
+import BBDGameLibrary.GameEngine.GameComponent;
 import engine.DoodleWarsGame;
 
 

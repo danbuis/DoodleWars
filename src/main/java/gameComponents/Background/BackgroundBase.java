@@ -1,9 +1,9 @@
 package gameComponents.Background;
 
-import GameEngine.GameItem2d;
-import Geometry2d.BBDPolygon;
-import OpenGL.Mesh;
-import OpenGL.ShaderProgram;
+import BBDGameLibrary.GameEngine.GameItem2d;
+import BBDGameLibrary.Geometry2d.BBDPolygon;
+import BBDGameLibrary.OpenGL.Mesh;
+import BBDGameLibrary.OpenGL.ShaderProgram;
 import org.joml.Matrix4f;
 
 public class BackgroundBase extends GameItem2d {
@@ -12,9 +12,9 @@ public class BackgroundBase extends GameItem2d {
     }
 
     @Override
-    public void setUniforms(Matrix4f projectionMatrix, Matrix4f worldMatrix) {
+    public void setUniforms(Matrix4f projectionMatrix, Matrix4f viewModelMatrix) {
         this.shader.setUniform("projectionMatrix", projectionMatrix);
-        this.shader.setUniform("worldMatrix", worldMatrix);
+        this.shader.setUniform("modelViewMatrix", viewModelMatrix);
         this.shader.setUniform("texture_sampler", 0);
     }
 }
