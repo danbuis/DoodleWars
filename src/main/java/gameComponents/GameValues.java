@@ -12,4 +12,7 @@ public class GameValues {
     //ship values
     public static final float PLAYER_WIDTH = 1.5f;
     public static final float PLAYER_HEIGHT = 2f;
+    public static final float PLAYER_ACCELERATION = 0.2f;
+    public static final float PLAYER_TURN_RATE = 1.5f;
+    public static final float PLAYER_MAX_SPEED = 1.0f;
 }

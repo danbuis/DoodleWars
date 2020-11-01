@@ -8,6 +8,8 @@ import BBDGameLibrary.OpenGL.*;
 import gameComponents.Background.Background;
 import gameComponents.GameValues;
 import gameComponents.Ships.PlayerShip;
+import org.joml.Matrix3f;
+import org.joml.Vector3f;
 
 public class DoodleWarsGame implements GameComponent {
     private final Renderer renderer;
@@ -30,12 +32,15 @@ public class DoodleWarsGame implements GameComponent {
 
     @Override
     public void input(Window window) {
-
+        playerShip.input(window);
     }
 
     @Override
     public void update(float v) {
+        playerShip.update(v);
 
+        Vector3f playerPosition = playerShip.getPosition();
+        camera.setPosition(playerPosition.x, playerPosition.y, 0);
     }
 
     @Override
