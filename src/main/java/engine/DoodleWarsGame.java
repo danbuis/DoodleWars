@@ -56,12 +56,7 @@ public class DoodleWarsGame implements GameComponent {
     }
 
     private PlayerShip initializePlayerShip(){
-        BBDPolygon poly = new BBDPolygon(new BBDPoint[]{
-                new BBDPoint(GameValues.PLAYER_WIDTH/2, GameValues.PLAYER_HEIGHT/2),
-                new BBDPoint(-GameValues.PLAYER_WIDTH/2, GameValues.PLAYER_HEIGHT/2),
-                new BBDPoint(-GameValues.PLAYER_WIDTH/2, -GameValues.PLAYER_HEIGHT/2),
-                new BBDPoint(GameValues.PLAYER_WIDTH/2, -GameValues.PLAYER_HEIGHT/2)
-        });
+        BBDPolygon poly = Utils.buildQuad(GameValues.PLAYER_WIDTH, GameValues.PLAYER_HEIGHT);
         ShaderProgram shader = Utils.buildBasicTexturedShaderProgram();
         Texture texture = new Texture("assets/images/Player.png");
 

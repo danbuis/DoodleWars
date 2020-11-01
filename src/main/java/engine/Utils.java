@@ -1,7 +1,10 @@
 package engine;
 
 import BBDGameLibrary.Geometry2d.BBDGeometry;
+import BBDGameLibrary.Geometry2d.BBDPoint;
+import BBDGameLibrary.Geometry2d.BBDPolygon;
 import BBDGameLibrary.OpenGL.ShaderProgram;
+import gameComponents.GameValues;
 
 public class Utils {
 
@@ -26,5 +29,14 @@ public class Utils {
         }
 
         return returnProgram;
+    }
+
+    public static BBDPolygon buildQuad(float width, float height){
+        return new BBDPolygon(new BBDPoint[]{
+                new BBDPoint(width/2, height/2),
+                new BBDPoint(-width/2, height/2),
+                new BBDPoint(-width/2, -height/2),
+                new BBDPoint(width/2, -height/2)
+        });
     }
 }
