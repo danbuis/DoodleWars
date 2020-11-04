@@ -2,20 +2,24 @@ package engine;
 
 import BBDGameLibrary.GameEngine.Camera;
 import BBDGameLibrary.GameEngine.GameComponent;
-import BBDGameLibrary.Geometry2d.BBDPoint;
+import BBDGameLibrary.GameEngine.GameItem;
 import BBDGameLibrary.Geometry2d.BBDPolygon;
 import BBDGameLibrary.OpenGL.*;
 import gameComponents.Background.Background;
 import gameComponents.GameValues;
 import gameComponents.Ships.PlayerShip;
-import org.joml.Matrix3f;
 import org.joml.Vector3f;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DoodleWarsGame implements GameComponent {
     private final Renderer renderer;
     private Camera camera;
     private Background background;
     private PlayerShip playerShip;
+
+    public static List<GameItem> bulletList = new ArrayList<GameItem>();
 
     public DoodleWarsGame() {
         renderer = new Renderer();
@@ -41,6 +45,10 @@ public class DoodleWarsGame implements GameComponent {
 
         Vector3f playerPosition = playerShip.getPosition();
         camera.setPosition(playerPosition.x, playerPosition.y, 0);
+
+        for (GameItem bullet: bulletList){
+            bullet.update(v);
+        }
     }
 
     @Override
@@ -48,6 +56,7 @@ public class DoodleWarsGame implements GameComponent {
         renderer.resetRenderer(window);
         background.render(window);
         renderer.renderItem(window, playerShip, camera);
+        renderer.renderList(window, bulletList, camera);
     }
 
     @Override
