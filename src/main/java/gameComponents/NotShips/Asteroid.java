@@ -69,7 +69,7 @@ public class Asteroid extends GameItem2d {
                 width = GameValues.ASTEROID_SIZE_4;
                 break;
         }
-        float sqrt = (float) (Math.sqrt(2) * width/2);
+        float sqrt = (float) (Math.sqrt(2) * width/4);
         return new BBDPolygon(new BBDPoint[]{
                 new BBDPoint(width/2, 0),
                 new BBDPoint(sqrt, sqrt),
