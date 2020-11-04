@@ -2,16 +2,16 @@ package gameComponents;
 
 public class GameValues {
     //layer values
-    public static final int PLAYER_SHIP_LAYER = 4900;
-    public static final int BACKGROUND_BASE_LAYER = 5000;
-    public static final int BULLET_LAYER = 4500;
-    public static final int ASTEROID_LAYER = 4501;
+    public static final int PLAYER_SHIP_LAYER = 9900;
+    public static final int BACKGROUND_BASE_LAYER = 10000;
+    public static final int BULLET_LAYER = 9500;
+    public static final int ASTEROID_LAYER = 9501;
 
     //background values
     public static final int TILES_PER_SIDE = 10;
     public static final int TILE_SIZE = 3;
 
-    public static final float BOARD_EDGE = TILES_PER_SIDE*TILE_SIZE * 0.95f;
+    public static final float BOARD_EDGE = TILES_PER_SIDE / 2 * TILE_SIZE * 0.95f;
     public static final float BOARD_EDGE_BUFFER = BOARD_EDGE + 3;
 
     //bullet values
@@ -45,5 +45,5 @@ public class GameValues {
     public static final float ASTEROID_START_SPEED_MAX = 0.4f;
     public static final float ASTEROID_SPEED_MODIFIER_MIN = 1.2f;
     public static final float ASTEROID_SPEED_MODIFIER_MAX = 1.7f;
-    public static final float ASTEROID_ROTATION_SPEED_MAX = 1.3f;
+    public static final float ASTEROID_ROTATION_SPEED_MAX = 0.7f;
 }

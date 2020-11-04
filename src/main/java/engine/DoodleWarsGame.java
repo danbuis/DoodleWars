@@ -7,6 +7,7 @@ import BBDGameLibrary.Geometry2d.BBDPolygon;
 import BBDGameLibrary.OpenGL.*;
 import gameComponents.Background.Background;
 import gameComponents.GameValues;
+import gameComponents.NotShips.Asteroid;
 import gameComponents.Ships.PlayerShip;
 import org.joml.Vector3f;
 
@@ -20,6 +21,7 @@ public class DoodleWarsGame implements GameComponent {
     private PlayerShip playerShip;
 
     public static List<GameItem> bulletList = new ArrayList<GameItem>();
+    public static List<GameItem> asteroidList = new ArrayList<GameItem>();
 
     public DoodleWarsGame() {
         renderer = new Renderer();
@@ -32,6 +34,25 @@ public class DoodleWarsGame implements GameComponent {
         background.init(window);
 
         playerShip = initializePlayerShip();
+        initializeAsteroids();
+    }
+
+    //Create a bunch of size 1 asteroids
+    private void initializeAsteroids() {
+        float min = GameValues.BOARD_EDGE * -1;
+        float max = GameValues.BOARD_EDGE;
+
+        for (int i = 0; i < GameValues.INITIAL_ASTEROID_COUNT; i++){
+            float speed = (float) ((Math.random() * (GameValues.ASTEROID_START_SPEED_MAX - GameValues.ASTEROID_START_SPEED_MIN)) + GameValues.ASTEROID_START_SPEED_MIN);
+            Asteroid asteroid = new Asteroid(1, (float) (Math.PI * 2 * Math.random()), speed);
+            DoodleWarsGame.asteroidList.add(asteroid);
+
+            float newX = (float) (Math.random()*(max-min+1)+min);
+            float newY = (float) (Math.random()*(max-min+1)+min);
+
+            asteroid.setPosition(newX, newY);
+            System.out.println(newX+", "+newY);
+        }
     }
 
     @Override
@@ -49,6 +70,10 @@ public class DoodleWarsGame implements GameComponent {
         for (GameItem bullet: bulletList){
             bullet.update(v);
         }
+
+        for (GameItem asteroid: asteroidList){
+            asteroid.update(v);
+        }
     }
 
     @Override
@@ -57,6 +82,7 @@ public class DoodleWarsGame implements GameComponent {
         background.render(window);
         renderer.renderItem(window, playerShip, camera);
         renderer.renderList(window, bulletList, camera);
+        renderer.renderList(window, asteroidList, camera);
     }
 
     @Override

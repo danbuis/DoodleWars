@@ -10,7 +10,7 @@ public class DoodleWars {
 		try {
 			GameComponent gameLogic = new DoodleWarsGame();
 			Engine gameEng = new Engine("GAME",
-					900, 480, true, gameLogic);
+					1800, 980, true, gameLogic);
 			gameEng.run();
 		} catch (Exception excp) {
 			excp.printStackTrace();
