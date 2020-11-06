@@ -1,37 +1,48 @@
 package gameComponents.NotShips;
 
+import BBDGameLibrary.GameEngine.GameItem;
 import BBDGameLibrary.GameEngine.GameItem2d;
 import BBDGameLibrary.Geometry2d.BBDPoint;
 import BBDGameLibrary.Geometry2d.BBDPolygon;
 import BBDGameLibrary.OpenGL.Mesh;
 import BBDGameLibrary.OpenGL.Texture;
+import engine.DoodleWarsGame;
 import engine.Utils;
 import gameComponents.GameValues;
 import org.joml.Matrix4f;
 
+import java.util.ArrayList;
+
 public class Asteroid extends GameItem2d {
     private final float direction;
     private float health;
-    private final float  speed ;
+    private final float speed ;
     private final float rotation;
+    private float hitRadius;
+    private int size;
 
     private static final Texture texture = new Texture("assets/images/asteroid.jpg");
 
     public Asteroid(int size_class, float direction, float speed) {
         super(Mesh.buildMeshFromPolygon(Asteroid.buildPolygon(size_class), texture), Utils.buildBasicTexturedShaderProgram(), Asteroid.buildPolygon(size_class), GameValues.ASTEROID_LAYER, false);
         this.direction = direction;
+        this.size = size_class;
         switch (size_class){
             case 1:
                 this.health = GameValues.ASTEROID_HEALTH_1;
+                this.hitRadius = 0.4f * GameValues.ASTEROID_SIZE_1;
                 break;
             case 2:
                 this.health = GameValues.ASTEROID_HEALTH_2;
+                this.hitRadius = 0.4f * GameValues.ASTEROID_SIZE_2;
                 break;
             case 3:
                 this.health = GameValues.ASTEROID_HEALTH_3;
+                this.hitRadius = 0.4f * GameValues.ASTEROID_SIZE_3;
                 break;
             case 4:
                 this.health = GameValues.ASTEROID_HEALTH_4;
+                this.hitRadius = 0.4f * GameValues.ASTEROID_SIZE_4;
                 break;
         }
         this.speed = speed;
@@ -53,6 +64,38 @@ public class Asteroid extends GameItem2d {
         }
         if (Math.abs(currentY) > GameValues.BOARD_EDGE_BUFFER){
             this.setPosition(currentX, -currentY);
+        }
+
+        //check for bullet hit
+        float distSquared = hitRadius*hitRadius;
+        ArrayList<GameItem> bulletsToRemove = new ArrayList<>();
+        for (GameItem bllt: DoodleWarsGame.bulletList) {
+            float deltaX = bllt.getPosition().x - this.getPosition().x;
+            float deltaY = bllt.getPosition().y - this.getPosition().y;
+
+            if (distSquared > deltaX * deltaX + deltaY + deltaY) {
+                Bullet bullet = (Bullet) bllt;
+                this.health -= bullet.getDamage();
+                System.out.println(this.health);
+                bullet.cleanup();
+                bulletsToRemove.add(bullet);
+            }
+        }
+        for(GameItem bullet:bulletsToRemove){
+            DoodleWarsGame.bulletList.remove(bullet);
+        }
+
+        if (this.health <= 0){
+            DoodleWarsGame.asteroidList.remove(this);
+            if(this.size != 1) {
+                for (int i = 0; i < GameValues.ASTEROID_SPLIT_QUANTITY; i++) {
+                    float newRotation = (float) (Math.PI * 2 * Math.random());
+                    float newSpeed = this.speed * (float) ((Math.random() * (GameValues.ASTEROID_SPEED_MODIFIER_MAX - GameValues.ASTEROID_SPEED_MODIFIER_MIN)) + GameValues.ASTEROID_SPEED_MODIFIER_MIN);
+
+                    Asteroid newAsteroid = new Asteroid(this.size - 1, newRotation, newSpeed);
+                    DoodleWarsGame.asteroidList.add(newAsteroid);
+                }
+            }
         }
     }
 

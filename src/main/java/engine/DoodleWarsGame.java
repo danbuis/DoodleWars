@@ -22,6 +22,7 @@ public class DoodleWarsGame implements GameComponent {
 
     public static List<GameItem> bulletList = new ArrayList<GameItem>();
     public static List<GameItem> asteroidList = new ArrayList<GameItem>();
+    public static List<GameItem> newAsteroids = new ArrayList<GameItem>();
 
     public DoodleWarsGame() {
         renderer = new Renderer();

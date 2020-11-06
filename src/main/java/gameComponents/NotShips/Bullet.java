@@ -38,5 +38,9 @@ public class Bullet extends GameItem2d {
         this.shader.setUniform("texture_sampler", 0);
     }
 
+    public float getDamage(){
+        return  this.damage;
+    }
+
 
 }
