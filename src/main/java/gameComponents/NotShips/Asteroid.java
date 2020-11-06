@@ -11,9 +11,9 @@ import org.joml.Matrix4f;
 
 public class Asteroid extends GameItem2d {
     private final float direction;
-    private float health = 0;
-    private float speed = 0;
-    private float rotation = 0;
+    private float health;
+    private final float  speed ;
+    private final float rotation;
 
     private static final Texture texture = new Texture("assets/images/asteroid.jpg");
 
@@ -44,6 +44,16 @@ public class Asteroid extends GameItem2d {
                 (float)Math.cos(this.direction) * speed * interval);
 
         this.rotate(this.rotation * interval);
+
+        //teleport to the other side
+        float currentX = this.getPosition().x;
+        float currentY = this.getPosition().y;
+        if (Math.abs(currentX) > GameValues.BOARD_EDGE_BUFFER){
+            this.setPosition(-currentX, currentY);
+        }
+        if (Math.abs(currentY) > GameValues.BOARD_EDGE_BUFFER){
+            this.setPosition(currentX, -currentY);
+        }
     }
 
     @Override
