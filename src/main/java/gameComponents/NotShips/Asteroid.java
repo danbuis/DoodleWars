@@ -30,19 +30,19 @@ public class Asteroid extends GameItem2d {
         switch (size_class){
             case 1:
                 this.health = GameValues.ASTEROID_HEALTH_1;
-                this.hitRadius = 0.4f * GameValues.ASTEROID_SIZE_1;
+                this.hitRadius = 0.5f * GameValues.ASTEROID_SIZE_1;
                 break;
             case 2:
                 this.health = GameValues.ASTEROID_HEALTH_2;
-                this.hitRadius = 0.4f * GameValues.ASTEROID_SIZE_2;
+                this.hitRadius = 0.5f * GameValues.ASTEROID_SIZE_2;
                 break;
             case 3:
                 this.health = GameValues.ASTEROID_HEALTH_3;
-                this.hitRadius = 0.4f * GameValues.ASTEROID_SIZE_3;
+                this.hitRadius = 0.5f * GameValues.ASTEROID_SIZE_3;
                 break;
             case 4:
                 this.health = GameValues.ASTEROID_HEALTH_4;
-                this.hitRadius = 0.4f * GameValues.ASTEROID_SIZE_4;
+                this.hitRadius = 0.5f * GameValues.ASTEROID_SIZE_4;
                 break;
         }
         this.speed = speed;
@@ -73,7 +73,7 @@ public class Asteroid extends GameItem2d {
             float deltaX = bllt.getPosition().x - this.getPosition().x;
             float deltaY = bllt.getPosition().y - this.getPosition().y;
 
-            if (distSquared > deltaX * deltaX + deltaY + deltaY) {
+            if (distSquared > deltaX * deltaX + deltaY * deltaY) {
                 Bullet bullet = (Bullet) bllt;
                 this.health -= bullet.getDamage();
                 System.out.println(this.health);
@@ -85,15 +85,17 @@ public class Asteroid extends GameItem2d {
             DoodleWarsGame.bulletList.remove(bullet);
         }
 
+        //check if this asteroid is toast
         if (this.health <= 0){
-            DoodleWarsGame.asteroidList.remove(this);
-            if(this.size != 1) {
+            DoodleWarsGame.newAsteroids.add(this);
+            if(this.size != 4) {
                 for (int i = 0; i < GameValues.ASTEROID_SPLIT_QUANTITY; i++) {
                     float newRotation = (float) (Math.PI * 2 * Math.random());
                     float newSpeed = this.speed * (float) ((Math.random() * (GameValues.ASTEROID_SPEED_MODIFIER_MAX - GameValues.ASTEROID_SPEED_MODIFIER_MIN)) + GameValues.ASTEROID_SPEED_MODIFIER_MIN);
 
-                    Asteroid newAsteroid = new Asteroid(this.size - 1, newRotation, newSpeed);
-                    DoodleWarsGame.asteroidList.add(newAsteroid);
+                    Asteroid newAsteroid = new Asteroid(this.size + 1, newRotation, newSpeed);
+                    newAsteroid.setPosition(this.getPosition().x, this.getPosition().y);
+                    DoodleWarsGame.newAsteroids.add(newAsteroid);
                 }
             }
         }

@@ -15,16 +15,16 @@ public class GameValues {
     public static final float BOARD_EDGE_BUFFER = BOARD_EDGE + 3;
 
     //bullet values
-    public static final float BULLET_SPEED = 2.7f;
-    public static final float BULLET_SIZE = 0.1f;
+    public static final float BULLET_SPEED = 4.2f;
+    public static final float BULLET_SIZE = 0.15f;
 
     //ship values
-    public static final float PLAYER_WIDTH = 1.5f;
-    public static final float PLAYER_HEIGHT = 2f;
-    public static final float PLAYER_ACCELERATION = 0.2f;
+    public static final float PLAYER_WIDTH = 1.2f;
+    public static final float PLAYER_HEIGHT = 1.6f;
+    public static final float PLAYER_ACCELERATION = 0.9f;
     public static final float PLAYER_TURN_RATE = 1.5f;
-    public static final float PLAYER_MAX_SPEED = 1.0f;
-    public static final float PLAYER_BULLET_COOLDOWN = 0.7f;
+    public static final float PLAYER_MAX_SPEED = 1.9f;
+    public static final float PLAYER_BULLET_COOLDOWN = 0.01f;
     public static final float PLAYER_BULLET_BASE_DAMAGE = 50;
 
     //asteroid values

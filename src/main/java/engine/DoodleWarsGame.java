@@ -75,6 +75,17 @@ public class DoodleWarsGame implements GameComponent {
         for (GameItem asteroid: asteroidList){
             asteroid.update(v);
         }
+
+        for(GameItem asteroid: newAsteroids){
+            if(asteroidList.contains(asteroid)){
+                asteroidList.remove(asteroid);
+                asteroid.cleanup();
+            }else{
+                System.out.println("adding an asteroid");
+                asteroidList.add(asteroid);
+            }
+        }
+        newAsteroids.clear();
     }
 
     @Override
