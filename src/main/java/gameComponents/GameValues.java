@@ -26,6 +26,9 @@ public class GameValues {
     public static final float PLAYER_MAX_SPEED = 1.9f;
     public static final float PLAYER_BULLET_COOLDOWN = 0.01f;
     public static final float PLAYER_BULLET_BASE_DAMAGE = 50;
+    public static final float PLAYER_HULL_BASE = 1000;
+    public static final float PLAYER_SHIELDS_BASE = 1000;
+    public static final float PLAYER_SHIELD_REGEN = 30;
 
     //asteroid values
     public static final int INITIAL_ASTEROID_COUNT = 4;

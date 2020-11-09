@@ -19,9 +19,23 @@ public class PlayerShip extends GameItem2d {
     private float shipRotationRate = 0;
     private float cooldown = 0;
     private boolean fireBulletsBool = false;
+    private float maxHull = GameValues.PLAYER_HULL_BASE;
+    private float maxShields = GameValues.PLAYER_SHIELDS_BASE;
+    private float currentHull = GameValues.PLAYER_HULL_BASE;
+    private float currentShields = GameValues.PLAYER_SHIELDS_BASE;
 
     public PlayerShip(Mesh mesh, ShaderProgram shaderProgram, BBDPolygon shape, int layer, boolean shapeInteracts) {
         super(mesh, shaderProgram, shape, layer, shapeInteracts);
+    }
+
+    public void takeDamage(float damage){
+        if (damage < currentShields){
+            currentShields -= damage;
+        }else{
+            damage -= currentShields;
+            currentShields = 0;
+            currentHull -= damage;
+        }
     }
 
     @Override
@@ -68,6 +82,9 @@ public class PlayerShip extends GameItem2d {
             Vector3f thisPosition = this.getPosition();
             bullet.setPosition(thisPosition.x, thisPosition.y);
         }
+
+        currentShields += GameValues.PLAYER_SHIELD_REGEN * interval;
+        currentShields = Math.min(currentShields, this.maxShields);
     }
 
     @Override
