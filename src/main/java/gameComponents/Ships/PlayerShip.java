@@ -1,10 +1,13 @@
 package gameComponents.Ships;
 
+import BBDGameLibrary.GameEngine.GameItem;
 import BBDGameLibrary.GameEngine.GameItem2d;
 import BBDGameLibrary.Geometry2d.BBDPolygon;
 import BBDGameLibrary.OpenGL.Mesh;
 import BBDGameLibrary.OpenGL.ShaderProgram;
 import BBDGameLibrary.OpenGL.Window;
+import engine.DoodleWarsGame;
+import gameComponents.NotShips.Asteroid;
 import gameComponents.NotShips.Bullet;
 import gameComponents.GameValues;
 import org.joml.Matrix4f;
@@ -61,7 +64,6 @@ public class PlayerShip extends GameItem2d {
 
     @Override
     public void update(float interval){
-
         //handle movement updates
         this.rotate(interval * this.shipRotationRate);
 
@@ -85,6 +87,21 @@ public class PlayerShip extends GameItem2d {
 
         currentShields += GameValues.PLAYER_SHIELD_REGEN * interval;
         currentShields = Math.min(currentShields, this.maxShields);
+
+        for(GameItem asteroid: DoodleWarsGame.asteroidList){
+            float asteroid_size = ((Asteroid) asteroid).getHitRadius();
+            float deltaX = asteroid.getPosition().x - this.getPosition().x;
+            float deltaY = asteroid.getPosition().y - this.getPosition().y;
+
+            float distance = (float) Math.sqrt(deltaX*deltaX + deltaY*deltaY);
+
+            if (distance > asteroid_size){
+                this.takeDamage(((Asteroid) asteroid).getDamage());
+                //Asteroid needs to take damage, probably give it a specific take damage func
+                //Make sure we don't take the damage every update by having a field of some sort
+
+            }
+        }
     }
 
     @Override

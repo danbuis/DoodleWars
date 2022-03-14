@@ -23,7 +23,7 @@ public class Spawner {
                         float deltaX = asteroid.getPosition().x - coords.x;
                         float deltaY = asteroid.getPosition().y - coords.y;
 
-                        float distance = deltaX*deltaX + deltaY*deltaY;
+                        float distance = (float) Math.sqrt(deltaX*deltaX + deltaY*deltaY);
 
                         if (distance > GameValues.ASTEROID_SIZE_1 * 1.1){
                             validSpot = false;

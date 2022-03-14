@@ -78,6 +78,7 @@ public class DoodleWarsGame implements GameComponent {
 
     @Override
     public void render(Window window) {
+        System.out.println("rendering");
         renderer.resetRenderer(window);
         background.render(window);
         renderer.renderItem(window, playerShip, camera);

@@ -20,6 +20,7 @@ public class Asteroid extends GameItem2d {
     private final float rotation;
     private float hitRadius;
     private int size;
+    private float damage;
 
     private static final Texture texture = new Texture("assets/images/asteroid.jpg");
 
@@ -31,18 +32,22 @@ public class Asteroid extends GameItem2d {
             case 1:
                 this.health = GameValues.ASTEROID_HEALTH_1;
                 this.hitRadius = 0.5f * GameValues.ASTEROID_SIZE_1;
+                this.damage = GameValues.ASTEROID_DAMAGE_1;
                 break;
             case 2:
                 this.health = GameValues.ASTEROID_HEALTH_2;
                 this.hitRadius = 0.5f * GameValues.ASTEROID_SIZE_2;
+                this.damage = GameValues.ASTEROID_DAMAGE_2;
                 break;
             case 3:
                 this.health = GameValues.ASTEROID_HEALTH_3;
                 this.hitRadius = 0.5f * GameValues.ASTEROID_SIZE_3;
+                this.damage = GameValues.ASTEROID_DAMAGE_3;
                 break;
             case 4:
                 this.health = GameValues.ASTEROID_HEALTH_4;
                 this.hitRadius = 0.5f * GameValues.ASTEROID_SIZE_4;
+                this.damage = GameValues.ASTEROID_DAMAGE_4;
                 break;
         }
         this.speed = speed;
@@ -135,5 +140,13 @@ public class Asteroid extends GameItem2d {
                 new BBDPoint(0, -width/2),
                 new BBDPoint(sqrt, -sqrt)
         });
+    }
+
+    public float getHitRadius(){
+        return this.hitRadius;
+    }
+
+    public float getDamage(){
+        return this.damage;
     }
 }
