@@ -2,6 +2,7 @@ package gameComponents.Background;
 
 import BBDGameLibrary.GameEngine.Camera;
 import BBDGameLibrary.GameEngine.GameComponent;
+import BBDGameLibrary.GameEngine.MouseInput;
 import BBDGameLibrary.Geometry2d.BBDPoint;
 import BBDGameLibrary.Geometry2d.BBDPolygon;
 import BBDGameLibrary.OpenGL.*;
@@ -46,12 +47,12 @@ public class Background implements GameComponent {
     }
 
     @Override
-    public void input(Window window) {
+    public void input(Window window, MouseInput mouseInput) {
 
     }
 
     @Override
-    public void update(float v) {
+    public void update(float interval, MouseInput mouseInput, Window window) {
 
     }
 

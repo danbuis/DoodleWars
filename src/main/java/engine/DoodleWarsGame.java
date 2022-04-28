@@ -3,6 +3,7 @@ package engine;
 import BBDGameLibrary.GameEngine.Camera;
 import BBDGameLibrary.GameEngine.GameComponent;
 import BBDGameLibrary.GameEngine.GameItem;
+import BBDGameLibrary.GameEngine.MouseInput;
 import BBDGameLibrary.Geometry2d.BBDPolygon;
 import BBDGameLibrary.OpenGL.*;
 import gameComponents.Background.Background;
@@ -19,11 +20,14 @@ public class DoodleWarsGame implements GameComponent {
     private final Camera camera;
     private Background background;
     private PlayerShip playerShip;
-    private final Spawner spawner = new Spawner();
+    private final Spawner spawner = new Spawner(this);
 
     public static List<GameItem> bulletList = new ArrayList<>();
     public static List<GameItem> asteroidList = new ArrayList<>();
     public static List<GameItem> newAsteroids = new ArrayList<>();
+    public static List<GameItem> enemyList = new ArrayList<>();
+
+    private int frame = 0;
 
     public DoodleWarsGame() {
         renderer = new Renderer();
@@ -43,25 +47,29 @@ public class DoodleWarsGame implements GameComponent {
     }
 
     @Override
-    public void input(Window window) {
-        playerShip.input(window);
+    public void input(Window window, MouseInput mouseInput) {
+        playerShip.input(window, mouseInput);
     }
 
     @Override
-    public void update(float v) {
-        spawner.update(v);
+    public void update(float interval, MouseInput mouseInput, Window window) {
+        spawner.update(interval);
 
-        playerShip.update(v);
+        playerShip.update(interval, mouseInput, window);
 
         Vector3f playerPosition = playerShip.getPosition();
-        camera.setPosition(playerPosition.x, playerPosition.y, 0);
+        camera.setPosition(playerPosition.x, playerPosition.y, 15);
 
         for (GameItem bullet: bulletList){
-            bullet.update(v);
+            bullet.update(interval, mouseInput, window);
+        }
+
+        for (GameItem enemy: enemyList){
+            enemy.update(interval, mouseInput, window);
         }
 
         for (GameItem asteroid: asteroidList){
-            asteroid.update(v);
+            asteroid.update(interval, mouseInput, window);
         }
 
         for(GameItem asteroid: newAsteroids){
@@ -78,12 +86,14 @@ public class DoodleWarsGame implements GameComponent {
 
     @Override
     public void render(Window window) {
-        System.out.println("rendering");
         renderer.resetRenderer(window);
         background.render(window);
         renderer.renderItem(window, playerShip, camera);
         renderer.renderList(window, bulletList, camera);
         renderer.renderList(window, asteroidList, camera);
+        if (enemyList.size() != 0) {
+            renderer.renderList(window, enemyList, camera);
+        }
     }
 
     @Override
@@ -97,5 +107,9 @@ public class DoodleWarsGame implements GameComponent {
         Texture texture = new Texture("assets/images/Player.png");
 
         return new PlayerShip(Mesh.buildMeshFromPolygon(poly, texture), shader, poly, GameValues.PLAYER_SHIP_LAYER, false);
+    }
+
+    public PlayerShip getPlayerShip(){
+        return this.playerShip;
     }
 }

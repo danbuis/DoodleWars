@@ -1,9 +1,11 @@
 package gameComponents.NotShips;
 
 import BBDGameLibrary.GameEngine.GameItem2d;
+import BBDGameLibrary.GameEngine.MouseInput;
 import BBDGameLibrary.Geometry2d.BBDPolygon;
 import BBDGameLibrary.OpenGL.Mesh;
 import BBDGameLibrary.OpenGL.Texture;
+import BBDGameLibrary.OpenGL.Window;
 import engine.DoodleWarsGame;
 import engine.Utils;
 import gameComponents.GameValues;
@@ -26,9 +28,9 @@ public class Bullet extends GameItem2d {
     }
 
     @Override
-    public void update(float interval){
-        this.translate((float)Math.sin(this.direction) * GameValues.BULLET_SPEED * interval,
-                (float)Math.cos(this.direction) * GameValues.BULLET_SPEED * interval);
+    public void update(float interval, MouseInput mouseInput, Window window){
+        this.translate((float)Math.cos(this.direction) * GameValues.BULLET_SPEED * interval,
+                -(float)Math.sin(this.direction) * GameValues.BULLET_SPEED * interval);
     }
 
     @Override

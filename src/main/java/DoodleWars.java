@@ -1,6 +1,7 @@
 import BBDGameLibrary.GameEngine.GameComponent;
 import BBDGameLibrary.GameEngine.Engine;
 import BBDGameLibrary.GameEngine.GameComponent;
+import BBDGameLibrary.OpenGL.Window;
 import engine.DoodleWarsGame;
 
 
@@ -10,7 +11,7 @@ public class DoodleWars {
 		try {
 			GameComponent gameLogic = new DoodleWarsGame();
 			Engine gameEng = new Engine("GAME",
-					1800, 980, true, gameLogic);
+					1800, 980, true, new Window.WindowOptions(), gameLogic);
 			gameEng.run();
 		} catch (Exception excp) {
 			excp.printStackTrace();

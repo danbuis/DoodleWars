@@ -6,32 +6,34 @@ public class GameValues {
     public static final int BACKGROUND_BASE_LAYER = 10000;
     public static final int BULLET_LAYER = 9500;
     public static final int ASTEROID_LAYER = 9501;
-
+    public static final int ENEMY_SHIP_LAYER = 9910;
     //background values
-    public static final int TILES_PER_SIDE = 10;
+    public static final int TILES_PER_SIDE = 30;
     public static final int TILE_SIZE = 3;
 
     public static final float BOARD_EDGE = TILES_PER_SIDE / 2 * TILE_SIZE * 0.95f;
     public static final float BOARD_EDGE_BUFFER = BOARD_EDGE + 3;
 
     //bullet values
-    public static final float BULLET_SPEED = 4.2f;
+    public static final float BULLET_SPEED = 8.2f;
     public static final float BULLET_SIZE = 0.15f;
 
     //ship values
-    public static final float PLAYER_WIDTH = 1.2f;
-    public static final float PLAYER_HEIGHT = 1.6f;
+    public static final float PLAYER_WIDTH = 1.6f;
+    public static final float PLAYER_HEIGHT = 1.2f;
     public static final float PLAYER_ACCELERATION = 0.9f;
-    public static final float PLAYER_TURN_RATE = 1.5f;
-    public static final float PLAYER_MAX_SPEED = 1.9f;
-    public static final float PLAYER_BULLET_COOLDOWN = 0.01f;
+    public static final float PLAYER_TURN_RATE = 2.5f;
+    public static final float PLAYER_MAX_SPEED = 3.9f;
+    public static final float PLAYER_BULLET_COOLDOWN = 0.1f;
     public static final float PLAYER_BULLET_BASE_DAMAGE = 50;
     public static final float PLAYER_HULL_BASE = 1000;
     public static final float PLAYER_SHIELDS_BASE = 1000;
     public static final float PLAYER_SHIELD_REGEN = 30;
 
+    public static final float[] EASY_BULLET = {1.1f, 2.9f, 4.2f, 0.3f, 250, 0};
+
     //asteroid values
-    public static final int INITIAL_ASTEROID_COUNT = 4;
+    public static final int INITIAL_ASTEROID_COUNT = 6;
     public static final float ASTEROID_SIZE_1 = 3.0f;
     public static final float ASTEROID_SIZE_2 = 1.8f;
     public static final float ASTEROID_SIZE_3 = 1.0f;

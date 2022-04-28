@@ -1,0 +1,80 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DoodleWars:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DoodleWars_jar</output-path>
+    <root id="archive" name="DoodleWars.jar">
+      <element id="module-output" name="DoodleWars" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/BBDGameLib.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/joml-1.9.25.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-egl.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-lz4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-nfd.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-ovr.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-par.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-sse.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-stb.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-vma.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-bgfx.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-cuda.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-glfw.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-jawt.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-llvm.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-lmdb.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-meow.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-odbc.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-opus.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-yoga.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-zstd.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-assimp.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-nanovg.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-openal.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-opencl.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-opengl.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-openvr.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-tinyfd.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-tootle.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-vulkan.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-xxhash.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-nuklear.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-shaderc.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-tinyexr.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-jemalloc.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-opengles.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-remotery.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-rpmalloc.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/jars/lwjgl-libdivide.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-lz4-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-nfd-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-ovr-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-par-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-sse-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-stb-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-vma-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-bgfx-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-glfw-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-llvm-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-lmdb-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-meow-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-opus-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-yoga-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-zstd-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-assimp-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-nanovg-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-openal-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-opengl-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-openvr-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-tinyfd-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-tootle-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-xxhash-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-nuklear-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-shaderc-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-tinyexr-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-jemalloc-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-opengles-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-remotery-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-rpmalloc-natives-windows.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/IdeaProjects/test/lwjgl/natives/lwjgl-libdivide-natives-windows.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

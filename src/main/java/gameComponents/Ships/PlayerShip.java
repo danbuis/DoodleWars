@@ -2,6 +2,7 @@ package gameComponents.Ships;
 
 import BBDGameLibrary.GameEngine.GameItem;
 import BBDGameLibrary.GameEngine.GameItem2d;
+import BBDGameLibrary.GameEngine.MouseInput;
 import BBDGameLibrary.Geometry2d.BBDPolygon;
 import BBDGameLibrary.OpenGL.Mesh;
 import BBDGameLibrary.OpenGL.ShaderProgram;
@@ -42,7 +43,7 @@ public class PlayerShip extends GameItem2d {
     }
 
     @Override
-    public void input(Window window){
+    public void input(Window window, MouseInput mouseInput){
         if(window.isKeyPressed(GLFW_KEY_UP)){
             this.acceleration = GameValues.PLAYER_ACCELERATION;
         }else if (window.isKeyPressed(GLFW_KEY_DOWN)){
@@ -52,9 +53,9 @@ public class PlayerShip extends GameItem2d {
         }
 
         if(window.isKeyPressed(GLFW_KEY_LEFT)){
-            this.shipRotationRate = -GameValues.PLAYER_TURN_RATE;
-        }else if (window.isKeyPressed(GLFW_KEY_RIGHT)){
             this.shipRotationRate = GameValues.PLAYER_TURN_RATE;
+        }else if (window.isKeyPressed(GLFW_KEY_RIGHT)){
+            this.shipRotationRate = -GameValues.PLAYER_TURN_RATE;
         }else{
             this.shipRotationRate = 0;
         }
@@ -63,15 +64,15 @@ public class PlayerShip extends GameItem2d {
     }
 
     @Override
-    public void update(float interval){
+    public void update(float interval, MouseInput mouseInput, Window window){
         //handle movement updates
-        this.rotate(interval * this.shipRotationRate);
+        this.rotate(interval * -this.shipRotationRate);
 
         speed += this.acceleration * interval;
         speed = Math.max(0, Math.min(speed, GameValues.PLAYER_MAX_SPEED));
 
-        this.translate((float)Math.sin(this.getRotation().z) * speed * interval,
-                (float)Math.cos(this.getRotation().z) *speed * interval);
+        this.translate((float)Math.cos(this.getRotation().z) * speed * interval,
+                -(float)Math.sin(this.getRotation().z) *speed * interval);
 
         //handle shooting bullet updates
         if (this.cooldown > 0){
@@ -87,21 +88,6 @@ public class PlayerShip extends GameItem2d {
 
         currentShields += GameValues.PLAYER_SHIELD_REGEN * interval;
         currentShields = Math.min(currentShields, this.maxShields);
-
-        for(GameItem asteroid: DoodleWarsGame.asteroidList){
-            float asteroid_size = ((Asteroid) asteroid).getHitRadius();
-            float deltaX = asteroid.getPosition().x - this.getPosition().x;
-            float deltaY = asteroid.getPosition().y - this.getPosition().y;
-
-            float distance = (float) Math.sqrt(deltaX*deltaX + deltaY*deltaY);
-
-            if (distance > asteroid_size){
-                this.takeDamage(((Asteroid) asteroid).getDamage());
-                //Asteroid needs to take damage, probably give it a specific take damage func
-                //Make sure we don't take the damage every update by having a field of some sort
-
-            }
-        }
     }
 
     @Override

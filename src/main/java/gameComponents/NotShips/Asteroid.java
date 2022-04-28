@@ -2,10 +2,12 @@ package gameComponents.NotShips;
 
 import BBDGameLibrary.GameEngine.GameItem;
 import BBDGameLibrary.GameEngine.GameItem2d;
+import BBDGameLibrary.GameEngine.MouseInput;
 import BBDGameLibrary.Geometry2d.BBDPoint;
 import BBDGameLibrary.Geometry2d.BBDPolygon;
 import BBDGameLibrary.OpenGL.Mesh;
 import BBDGameLibrary.OpenGL.Texture;
+import BBDGameLibrary.OpenGL.Window;
 import engine.DoodleWarsGame;
 import engine.Utils;
 import gameComponents.GameValues;
@@ -55,7 +57,7 @@ public class Asteroid extends GameItem2d {
     }
 
     @Override
-    public void update(float interval){
+    public void update(float interval, MouseInput mouseInput, Window window){
         this.translate((float)Math.sin(this.direction) * speed * interval,
                 (float)Math.cos(this.direction) * speed * interval);
 

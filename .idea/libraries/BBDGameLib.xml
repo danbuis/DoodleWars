@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="BBDGameLib">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../BBDGameLib_jar/BBDGameLib.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/BBDGameLib.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
