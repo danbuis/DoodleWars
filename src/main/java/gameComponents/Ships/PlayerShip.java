@@ -8,11 +8,15 @@ import BBDGameLibrary.OpenGL.Mesh;
 import BBDGameLibrary.OpenGL.ShaderProgram;
 import BBDGameLibrary.OpenGL.Window;
 import engine.DoodleWarsGame;
+import gameComponents.Equipment.Shooter;
 import gameComponents.NotShips.Asteroid;
 import gameComponents.NotShips.Bullet;
 import gameComponents.GameValues;
 import org.joml.Matrix4f;
+import org.joml.Vector2f;
 import org.joml.Vector3f;
+
+import java.util.ArrayList;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -27,9 +31,11 @@ public class PlayerShip extends GameItem2d {
     private float maxShields = GameValues.PLAYER_SHIELDS_BASE;
     private float currentHull = GameValues.PLAYER_HULL_BASE;
     private float currentShields = GameValues.PLAYER_SHIELDS_BASE;
+    private ArrayList<Shooter> guns = new ArrayList<Shooter>();
 
     public PlayerShip(Mesh mesh, ShaderProgram shaderProgram, BBDPolygon shape, int layer, boolean shapeInteracts) {
         super(mesh, shaderProgram, shape, layer, shapeInteracts);
+        guns.add(new Shooter(GameValues.PLAYER_BULLET_COOLDOWN, 0, 1, this, new Vector2f(GameValues.PLAYER_WIDTH/2,0)));
     }
 
     public void takeDamage(float damage){
@@ -74,16 +80,12 @@ public class PlayerShip extends GameItem2d {
         this.translate((float)Math.cos(this.getRotation().z) * speed * interval,
                 -(float)Math.sin(this.getRotation().z) *speed * interval);
 
-        //handle shooting bullet updates
-        if (this.cooldown > 0){
-            this.cooldown -= interval;
-        }
-        if(fireBulletsBool && this.cooldown <= 0){
-            this.cooldown = GameValues.PLAYER_BULLET_COOLDOWN;
+        for (Shooter gun: guns){
+            gun.update(interval);
 
-            Bullet bullet = new Bullet(this, GameValues.PLAYER_BULLET_BASE_DAMAGE);
-            Vector3f thisPosition = this.getPosition();
-            bullet.setPosition(thisPosition.x, thisPosition.y);
+            if(fireBulletsBool){
+                gun.shoot();
+            }
         }
 
         currentShields += GameValues.PLAYER_SHIELD_REGEN * interval;

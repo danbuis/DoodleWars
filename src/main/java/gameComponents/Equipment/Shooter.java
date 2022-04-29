@@ -37,7 +37,9 @@ public class Shooter {
             this.ready = false;
             Bullet bullet = new Bullet(this.parent, GameValues.PLAYER_BULLET_BASE_DAMAGE * this.damageMultiplier);
             Vector3f bulletPosition = parent.getPosition();
-            bullet.setPosition(bulletPosition.x + offset.x, bulletPosition.y + offset.y);
+            BBDPoint offsetPoint = new BBDPoint(offset.x, offset.y);
+            offsetPoint.rotateAroundPoint(new BBDPoint(0,0), -parent.getRotation().z);
+            bullet.setPosition(bulletPosition.x + offsetPoint.getXLoc(), bulletPosition.y + offsetPoint.getYLoc());
         }
     }
 
