@@ -58,8 +58,7 @@ public class Asteroid extends GameItem2d {
 
     @Override
     public void update(float interval, MouseInput mouseInput, Window window){
-        this.translate((float)Math.sin(this.direction) * speed * interval,
-                (float)Math.cos(this.direction) * speed * interval);
+        Utils.translateEntity(this, speed, interval);
 
         this.rotate(this.rotation * interval);
 

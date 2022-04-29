@@ -75,10 +75,8 @@ public class BaseShip extends GameItem2d {
 
         // TODO manage acceleration
         this.current_speed = desiredSpeed;
-        float xMult = (float)Math.cos(this.getRotation().z);
-        float yMult = (float)Math.sin(this.getRotation().z);
-        this.translate(xMult * this.current_speed * updateInterval,
-                -yMult * this.current_speed  * updateInterval);
+
+        Utils.translateEntity(this, this.current_speed, updateInterval);
         System.out.println(this.distanceSquaredToTarget());
         return this.distanceSquaredToTarget() < 0.8f;
     }

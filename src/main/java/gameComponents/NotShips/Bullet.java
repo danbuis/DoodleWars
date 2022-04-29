@@ -12,8 +12,6 @@ import gameComponents.GameValues;
 import org.joml.Matrix4f;
 
 public class Bullet extends GameItem2d {
-    private final GameItem2d parent;
-    private final float direction;
     private final float damage;
 
     private static final BBDPolygon polygon = Utils.buildQuad(GameValues.BULLET_SIZE, GameValues.BULLET_SIZE);
@@ -21,16 +19,14 @@ public class Bullet extends GameItem2d {
 
     public Bullet(GameItem2d parent, float damage){
         super(Mesh.buildMeshFromPolygon(polygon, texture), Utils.buildBasicTexturedShaderProgram(), polygon, GameValues.BULLET_LAYER, false);
-        this.parent = parent;
         this.damage = damage;
-        this.direction = parent.getRotation().z;
+        this.setRotation(parent.getRotation().z);
         DoodleWarsGame.bulletList.add(this);
     }
 
     @Override
     public void update(float interval, MouseInput mouseInput, Window window){
-        this.translate((float)Math.cos(this.direction) * GameValues.BULLET_SPEED * interval,
-                -(float)Math.sin(this.direction) * GameValues.BULLET_SPEED * interval);
+        Utils.translateEntity(this, GameValues.BULLET_SPEED, interval);
     }
 
     @Override

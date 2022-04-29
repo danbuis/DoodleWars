@@ -1,5 +1,6 @@
 package engine;
 
+import BBDGameLibrary.GameEngine.GameItem2d;
 import BBDGameLibrary.Geometry2d.BBDGeometry;
 import BBDGameLibrary.Geometry2d.BBDPoint;
 import BBDGameLibrary.Geometry2d.BBDPolygon;
@@ -38,5 +39,10 @@ public class Utils {
                 new BBDPoint(-width/2, -height/2),
                 new BBDPoint(width/2, -height/2)
         });
+    }
+
+    public static void translateEntity(GameItem2d entity, float speed, float interval){
+        entity.translate((float)Math.cos(entity.getRotation().z) * speed * interval,
+                -(float)Math.sin(entity.getRotation().z) *speed * interval);
     }
 }

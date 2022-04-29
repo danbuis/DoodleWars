@@ -8,6 +8,7 @@ import BBDGameLibrary.OpenGL.Mesh;
 import BBDGameLibrary.OpenGL.ShaderProgram;
 import BBDGameLibrary.OpenGL.Window;
 import engine.DoodleWarsGame;
+import engine.Utils;
 import gameComponents.Equipment.Shooter;
 import gameComponents.NotShips.Asteroid;
 import gameComponents.NotShips.Bullet;
@@ -77,8 +78,7 @@ public class PlayerShip extends GameItem2d {
         speed += this.acceleration * interval;
         speed = Math.max(0, Math.min(speed, GameValues.PLAYER_MAX_SPEED));
 
-        this.translate((float)Math.cos(this.getRotation().z) * speed * interval,
-                -(float)Math.sin(this.getRotation().z) *speed * interval);
+        Utils.translateEntity(this, speed, interval);
 
         for (Shooter gun: guns){
             gun.update(interval);
