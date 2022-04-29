@@ -53,12 +53,15 @@ public class Asteroid extends GameItem2d {
                 break;
         }
         this.speed = speed;
-        this.rotation = (float) (Math.random() * GameValues.ASTEROID_ROTATION_SPEED_MAX);
+        float rotationSpeed = (float) (Math.random() * GameValues.ASTEROID_ROTATION_SPEED_MAX);
+        int multiplier = Math.random() > 0.5 ? 1 : -1;
+        this.rotation = rotationSpeed * multiplier;
     }
 
     @Override
     public void update(float interval, MouseInput mouseInput, Window window){
-        Utils.translateEntity(this, speed, interval);
+        this.translate((float)Math.sin(this.direction) * speed * interval,
+                (float)Math.cos(this.direction) * speed * interval);
 
         this.rotate(this.rotation * interval);
 
