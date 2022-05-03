@@ -79,8 +79,12 @@ public class BaseShip extends GameItem2d {
         float yMult = (float)Math.sin(this.getRotation().z);
         this.translate(xMult * this.current_speed * updateInterval,
                 -yMult * this.current_speed  * updateInterval);
-        System.out.println(this.distanceSquaredToTarget());
         return this.distanceSquaredToTarget() < 0.8f;
+    }
+
+    public BBDPoint positionToPoint(){
+        Vector3f position = this.getPosition();
+        return new BBDPoint(position.x, position.y);
     }
 
     @Override

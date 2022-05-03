@@ -11,6 +11,7 @@ public class Spawner {
     private float elapsedTime = 0;
     public static final int SPAWN_ASTEROID = 0;
     public static final int EASYBULLET = 1;
+    public static final int MEDIUMBULLET = 2;
 
     public Spawner(DoodleWarsGame game){
         this.game = game;
@@ -49,7 +50,13 @@ public class Spawner {
                 EasyBulletShip new_ship = new EasyBulletShip(game.getPlayerShip());
                 DoodleWarsGame.enemyList.add(new_ship);
                 new_ship.setPosition(coords.x, coords.y);
-                System.out.println(coords);
+                break;
+            }
+            case MEDIUMBULLET: {
+                Vector2f coords = this.getSpawnCoords();
+                Flock flock = new Flock(game.getPlayerShip(), game.flockList);
+                game.flockList.add(flock);
+                flock.getShips().get(0).setPosition(coords.x, coords.y);
                 break;
             }
         }
@@ -90,7 +97,8 @@ public class Spawner {
     public void update(float interval){
         elapsedTime += interval;
         if (elapsedTime > 5.0){
-            elapsedTime = 4;
+            elapsedTime = 2;
+            spawnItem(MEDIUMBULLET);
             spawnItem(EASYBULLET);
         }
     }

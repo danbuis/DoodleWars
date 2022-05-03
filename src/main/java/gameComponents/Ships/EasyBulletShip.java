@@ -35,7 +35,7 @@ public class EasyBulletShip extends BaseShip{
         float dist = playerPos.distanceSquared(myPos);
 
         //logic to handle if player in detection range
-        if (dist < 25){
+        if (dist < 64){
             this.targetPoint = new BBDPoint(playerPos.x, playerPos.y);
             if (!playerFound){
                 playerFound=true;
@@ -46,13 +46,12 @@ public class EasyBulletShip extends BaseShip{
             }
         }
 
-        boolean arrived = this.moveTowardTarget(interval, 0.8f * this.getMaxSpeed());
+        boolean arrived = this.moveTowardTarget(interval, 0.6f * this.getMaxSpeed());
 
         // TODO logic for firing
 
         if (arrived && !playerFound){
             this.targetPoint = this.roombaSearch();
-            System.out.println("Updated target : " + this.targetPoint);
         }
 
     }

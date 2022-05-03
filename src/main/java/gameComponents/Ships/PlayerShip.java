@@ -3,6 +3,7 @@ package gameComponents.Ships;
 import BBDGameLibrary.GameEngine.GameItem;
 import BBDGameLibrary.GameEngine.GameItem2d;
 import BBDGameLibrary.GameEngine.MouseInput;
+import BBDGameLibrary.Geometry2d.BBDPoint;
 import BBDGameLibrary.Geometry2d.BBDPolygon;
 import BBDGameLibrary.OpenGL.Mesh;
 import BBDGameLibrary.OpenGL.ShaderProgram;
@@ -30,6 +31,11 @@ public class PlayerShip extends GameItem2d {
 
     public PlayerShip(Mesh mesh, ShaderProgram shaderProgram, BBDPolygon shape, int layer, boolean shapeInteracts) {
         super(mesh, shaderProgram, shape, layer, shapeInteracts);
+    }
+
+    public BBDPoint positionToPoint(){
+        Vector3f position = this.getPosition();
+        return new BBDPoint(position.x, position.y);
     }
 
     public void takeDamage(float damage){

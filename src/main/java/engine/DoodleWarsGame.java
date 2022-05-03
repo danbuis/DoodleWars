@@ -8,7 +8,9 @@ import BBDGameLibrary.Geometry2d.BBDPolygon;
 import BBDGameLibrary.OpenGL.*;
 import gameComponents.Background.Background;
 import gameComponents.GameValues;
+import gameComponents.NotShips.Flock;
 import gameComponents.NotShips.Spawner;
+import gameComponents.Ships.BaseShip;
 import gameComponents.Ships.PlayerShip;
 import org.joml.Vector3f;
 
@@ -26,6 +28,7 @@ public class DoodleWarsGame implements GameComponent {
     public static List<GameItem> asteroidList = new ArrayList<>();
     public static List<GameItem> newAsteroids = new ArrayList<>();
     public static List<GameItem> enemyList = new ArrayList<>();
+    public static List<Flock> flockList = new ArrayList<>();
 
     private int frame = 0;
 
@@ -58,7 +61,7 @@ public class DoodleWarsGame implements GameComponent {
         playerShip.update(interval, mouseInput, window);
 
         Vector3f playerPosition = playerShip.getPosition();
-        camera.setPosition(playerPosition.x, playerPosition.y, 15);
+        camera.setPosition(playerPosition.x, playerPosition.y, 9);
 
         for (GameItem bullet: bulletList){
             bullet.update(interval, mouseInput, window);
@@ -71,6 +74,13 @@ public class DoodleWarsGame implements GameComponent {
         for (GameItem asteroid: asteroidList){
             asteroid.update(interval, mouseInput, window);
         }
+
+        //update flocks
+        for (Flock flock:flockList){
+            flock.update(interval, mouseInput, window);
+        }
+        //remove discard flocks
+        flockList.removeIf(n -> n.flockSize()==0);
 
         for(GameItem asteroid: newAsteroids){
             if(asteroidList.contains(asteroid)){
@@ -93,6 +103,11 @@ public class DoodleWarsGame implements GameComponent {
         renderer.renderList(window, asteroidList, camera);
         if (enemyList.size() != 0) {
             renderer.renderList(window, enemyList, camera);
+        }
+        for (Flock flock: flockList){
+            for (BaseShip ship : flock.getShips()){
+                renderer.renderItem(window, (GameItem)ship, camera);
+            }
         }
     }
 

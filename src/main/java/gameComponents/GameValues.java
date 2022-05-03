@@ -19,8 +19,8 @@ public class GameValues {
     public static final float BULLET_SIZE = 0.15f;
 
     //ship values
-    public static final float PLAYER_WIDTH = 1.6f;
-    public static final float PLAYER_HEIGHT = 1.2f;
+    public static final float PLAYER_WIDTH = 1.0f;
+    public static final float PLAYER_HEIGHT = 0.75f;
     public static final float PLAYER_ACCELERATION = 0.9f;
     public static final float PLAYER_TURN_RATE = 2.5f;
     public static final float PLAYER_MAX_SPEED = 3.9f;
